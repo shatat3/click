@@ -24,8 +24,8 @@ export default function Header() {
             <Link
               to="/"
               className={cn(
-                "text-white hover:text-gray-300 transition-colors",
-                location.pathname === "/" && "text-white shadow-glow-white"
+                "text-white hover:text-gray-300 transition-colors px-3 py-2 rounded-md",
+                location.pathname === "/" && "text-white shadow-glow-white bg-transparent"
               )}
             >
               Home
@@ -33,8 +33,8 @@ export default function Header() {
             <Link
               to="/about"
               className={cn(
-                "text-white hover:text-gray-300 transition-colors",
-                location.pathname === "/about" && "text-white shadow-glow-white"
+                "text-white hover:text-gray-300 transition-colors px-3 py-2 rounded-md",
+                location.pathname === "/about" && "text-white shadow-glow-white bg-transparent"
               )}
             >
               About
@@ -42,8 +42,8 @@ export default function Header() {
             <Link
               to="/services"
               className={cn(
-                "text-white hover:text-gray-300 transition-colors",
-                location.pathname === "/services" && "text-white shadow-glow-white"
+                "text-white hover:text-gray-300 transition-colors px-3 py-2 rounded-md",
+                location.pathname === "/services" && "text-white shadow-glow-white bg-transparent"
               )}
             >
               Services
@@ -51,8 +51,8 @@ export default function Header() {
             <Link
               to="/contact"
               className={cn(
-                "text-white hover:text-gray-300 transition-colors",
-                location.pathname === "/contact" && "text-white shadow-glow-white"
+                "text-white hover:text-gray-300 transition-colors px-3 py-2 rounded-md",
+                location.pathname === "/contact" && "text-white shadow-glow-white bg-transparent"
               )}
             >
               Contact
@@ -77,7 +77,7 @@ export default function Header() {
               to="/"
               className={cn(
                 "block px-3 py-2 text-white hover:text-gray-300 transition-colors rounded-md",
-                location.pathname === "/" && "text-white shadow-glow-white"
+                location.pathname === "/" && "text-white shadow-glow-white bg-transparent"
               )}
               onClick={() => setIsMenuOpen(false)}
             >
@@ -87,7 +87,7 @@ export default function Header() {
               to="/about"
               className={cn(
                 "block px-3 py-2 text-white hover:text-gray-300 transition-colors rounded-md",
-                location.pathname === "/about" && "text-white shadow-glow-white"
+                location.pathname === "/about" && "text-white shadow-glow-white bg-transparent"
               )}
               onClick={() => setIsMenuOpen(false)}
             >
@@ -97,7 +97,7 @@ export default function Header() {
               to="/services"
               className={cn(
                 "block px-3 py-2 text-white hover:text-gray-300 transition-colors rounded-md",
-                location.pathname === "/services" && "text-white shadow-glow-white"
+                location.pathname === "/services" && "text-white shadow-glow-white bg-transparent"
               )}
               onClick={() => setIsMenuOpen(false)}
             >
@@ -107,7 +107,7 @@ export default function Header() {
               to="/contact"
               className={cn(
                 "block px-3 py-2 text-white hover:text-gray-300 transition-colors rounded-md",
-                location.pathname === "/contact" && "text-white shadow-glow-white"
+                location.pathname === "/contact" && "text-white shadow-glow-white bg-transparent"
               )}
               onClick={() => setIsMenuOpen(false)}
             >

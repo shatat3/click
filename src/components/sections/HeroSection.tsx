@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Button from "../ui/Button"
 
 export default function HeroSection() {
   const mobileVideoRef = useRef<HTMLVideoElement>(null)
   const desktopVideoRef = useRef<HTMLVideoElement>(null)
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
 
   useEffect(() => {
     // Aggressive autoplay strategy for mobile - Updated for deployment
@@ -22,6 +23,7 @@ export default function HeroSection() {
           mobileVideoRef.current.loop = true
           await mobileVideoRef.current.play()
           console.log('Mobile video autoplay successful')
+          setIsVideoPlaying(true)
         }
         if (desktopVideoRef.current) {
           desktopVideoRef.current.currentTime = 0
@@ -42,6 +44,7 @@ export default function HeroSection() {
                 mobileVideoRef.current.playsInline = true
                 await mobileVideoRef.current.play()
                 console.log(`Mobile video ${delay}ms delayed autoplay successful`)
+                setIsVideoPlaying(true)
               }
               if (desktopVideoRef.current) {
                 await desktopVideoRef.current.play()
@@ -70,6 +73,7 @@ export default function HeroSection() {
                 mobileVideoRef.current.playsInline = true
                 await mobileVideoRef.current.play()
                 console.log('Mobile video visibility change autoplay successful')
+                setIsVideoPlaying(true)
               }
               if (desktopVideoRef.current) {
                 await desktopVideoRef.current.play()
@@ -92,6 +96,7 @@ export default function HeroSection() {
               mobileVideoRef.current.playsInline = true
               await mobileVideoRef.current.play()
               console.log('Mobile video window focus autoplay successful')
+              setIsVideoPlaying(true)
             }
             if (desktopVideoRef.current) {
               await desktopVideoRef.current.play()
@@ -113,6 +118,7 @@ export default function HeroSection() {
               mobileVideoRef.current.playsInline = true
               await mobileVideoRef.current.play()
               console.log('Mobile video user interaction autoplay successful')
+              setIsVideoPlaying(true)
             }
             if (desktopVideoRef.current) {
               await desktopVideoRef.current.play()
@@ -145,6 +151,7 @@ export default function HeroSection() {
               mobileVideoRef.current.playsInline = true
               await mobileVideoRef.current.play()
               console.log('Mobile video DOM content loaded autoplay successful')
+              setIsVideoPlaying(true)
             }
           } catch (domError) {
             console.log('DOM content loaded autoplay failed:', domError)
@@ -251,7 +258,10 @@ export default function HeroSection() {
           onError={(e) => console.error('Mobile video error:', e)}
           onLoadStart={() => console.log('Mobile video loading...')}
           onCanPlay={() => console.log('Mobile video can play')}
-          onPlay={() => console.log('Mobile video playing')}
+          onPlay={() => {
+            console.log('Mobile video playing')
+            setIsVideoPlaying(true)
+          }}
           onPause={() => console.log('Mobile video paused')}
           onLoadedData={() => console.log('Mobile video loaded')}
           style={{ 
@@ -311,11 +321,20 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="py-8 sm:py-12 lg:py-16"
         >
-          {/* CTA Button */}
+          {/* CTA Button - Hidden on mobile until video plays */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              display: isVideoPlaying ? 'block' : 'none'
+            }}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0.6,
+              display: { delay: 0.2 }
+            }}
+            className={`${isVideoPlaying ? 'block' : 'hidden md:block'}`}
           >
             <Button 
               size="lg" 
