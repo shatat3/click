@@ -69,4 +69,26 @@ export interface PaginatedResponse<T> {
   size: number
   first: boolean
   last: boolean
+}
+
+// Work Category types
+export interface WorkCategory {
+  id: string
+  title: string
+  description: string
+  path: string
+  icon: string
+  gradient: string
+}
+
+// Client types
+export interface Client {
+  id: string
+  name: string
+  project: string
+  description: string
+  videoUrl: string
+  thumbnail?: string
+  category: string
+  year: string
 } 

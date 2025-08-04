@@ -8,6 +8,9 @@ import ServicesPage from "./pages/ServicesPage"
 import AboutPage from "./pages/AboutPage"
 import ContactPage from "./pages/ContactPage"
 import NotFoundPage from "./pages/NotFoundPage"
+import VFXPage from "./pages/VFXPage"
+import EditingPage from "./pages/EditingPage"
+import EventsPage from "./pages/EventsPage"
 import ErrorBoundary from "./components/common/ErrorBoundary"
 import "./styles/globals.css"
 
@@ -23,6 +26,9 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/vfx" element={<VFXPage />} />
+            <Route path="/editing" element={<EditingPage />} />
+            <Route path="/events" element={<EventsPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AnimatePresence>
