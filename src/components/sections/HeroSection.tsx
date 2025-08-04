@@ -274,7 +274,7 @@ export default function HeroSection() {
             objectPosition: 'center center'
           }}
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/hero-video-mbsize.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         
@@ -341,7 +341,7 @@ export default function HeroSection() {
               variant="3d"
               className="group text-lg sm:text-xl px-8 sm:px-10 py-4 sm:py-5 shadow-glow-white-intense"
             >
-              Click ! {/* Updated button text - deployment timestamp - Vercel force update */}
+              Click Now! {/* Updated button text - deployment timestamp - Vercel force update */}
               <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </motion.div>
