@@ -13,8 +13,13 @@ export default function Header() {
       <nav className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 text-white hover:text-gray-300 transition-colors">
-            <img src="/click-logo.png" alt="Click Logo" className="h-8 w-8" />
+          <Link to="/" className="flex items-center space-x-3 text-white hover:text-gray-300 transition-colors">
+            <img 
+              src="/click-logo.png" 
+              alt="Click Logo" 
+              className="h-8 w-auto object-contain"
+              style={{ aspectRatio: '1/1' }}
+            />
             <span className="text-xl font-bold">Click</span>
           </Link>
 
