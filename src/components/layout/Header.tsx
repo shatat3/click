@@ -15,8 +15,8 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 text-white hover:text-gray-300 transition-colors">
-            <Sparkles className="h-6 w-6 text-white shadow-glow-white" />
-            <span className="text-xl font-bold">ModernApp</span>
+            <img src="/click-logo.png" alt="Click Logo" className="h-8 w-8" />
+            <span className="text-xl font-bold">Click</span>
           </Link>
 
           {/* Desktop Navigation */}

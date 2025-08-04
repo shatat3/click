@@ -7,33 +7,33 @@ import Card from "../ui/Card"
 const services = [
   {
     icon: Code,
-    title: "Modern Development",
-    description: "Built with React 18+, TypeScript, and modern development practices for scalable applications.",
+    title: "Commercial Production",
+    description: "High-quality commercial videos that capture your brand's essence and drive engagement.",
   },
   {
     icon: Palette,
-    title: "Beautiful Design",
-    description: "Carefully crafted UI with Tailwind CSS and custom design system for stunning user experiences.",
+    title: "Creative Direction",
+    description: "Expert creative direction and storytelling to bring your vision to life with stunning visuals.",
   },
   {
     icon: Zap,
-    title: "High Performance",
-    description: "Optimized for speed with lazy loading, code splitting, and performance best practices.",
+    title: "Post-Production",
+    description: "Professional editing, color grading, and visual effects to create polished final content.",
   },
   {
     icon: Shield,
-    title: "Type Safety",
-    description: "Full TypeScript support with strict typing for better code quality and developer experience.",
+    title: "Quality Assurance",
+    description: "Rigorous quality control ensuring every frame meets our high standards of excellence.",
   },
   {
     icon: Globe,
-    title: "SEO Optimized",
-    description: "Built-in SEO optimization with meta tags, structured data, and accessibility features.",
+    title: "Multi-Platform",
+    description: "Content optimized for all platforms - TV, digital, social media, and streaming services.",
   },
   {
     icon: Smartphone,
-    title: "Mobile First",
-    description: "Responsive design that works perfectly on all devices with mobile-first approach.",
+    title: "Mobile Content",
+    description: "Specialized content creation for mobile-first audiences and social media platforms.",
   },
 ]
 
@@ -48,10 +48,10 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose Our Template?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Production Services</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Everything you need to build modern, scalable, and beautiful web applications with the latest technologies
-            and best practices.
+            From concept to final delivery, we provide comprehensive video production services with cutting-edge
+            technology and creative excellence.
           </p>
         </motion.div>
 

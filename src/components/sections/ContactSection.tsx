@@ -22,19 +22,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "hello@modernapp.com",
-    href: "mailto:hello@modernapp.com",
+    value: "support@clickproduction.com",
+    href: "mailto:hello@clickproduction.com",
   },
   {
     icon: Phone,
     title: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: "+962 79 555 5555",
+    href: "tel:+962795555555",
   },
   {
     icon: MapPin,
-    title: "Address",
-    value: "123 Tech Street, San Francisco, CA 94105",
+    title: "Studio",
+    value: "456 Creative Avenue, Los Angeles, CA 90210",
     href: "#",
   },
 ]
@@ -71,10 +71,10 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Start Your Project</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Have questions about our template? We'd love to hear from you. Send us a message and we'll respond as soon
-            as possible.
+            Ready to bring your vision to life? Let's discuss your project and create something amazing together.
+            Get in touch and we'll respond within 24 hours.
           </p>
         </motion.div>
 

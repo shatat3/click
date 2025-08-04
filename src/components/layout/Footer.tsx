@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Sparkles, Github, Twitter, Linkedin } from "lucide-react"
+import { Sparkles, Instagram, Twitter, Linkedin } from "lucide-react"
 
 const footerLinks = {
   company: [
@@ -13,7 +13,7 @@ const footerLinks = {
     { name: "Cookie Policy", href: "/cookies" },
   ],
   social: [
-    { name: "GitHub", href: "#", icon: Github },
+    { name: "Instagram", href: "#", icon: Instagram },
     { name: "Twitter", href: "#", icon: Twitter },
     { name: "LinkedIn", href: "#", icon: Linkedin },
   ],
@@ -26,14 +26,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="flex items-center space-x-2 mb-4">
-              <Sparkles className="h-8 w-8 text-[#8f9a6f]" />
-              <span className="text-xl font-bold text-white">ModernApp</span>
-            </Link>
-            <p className="text-gray-400 max-w-md">
-              A modern React TypeScript template with best practices, beautiful design, and excellent developer
-              experience.
-            </p>
+                      <Link to="/" className="flex items-center space-x-2 mb-4">
+            <img src="/click-logo.png" alt="Click Logo" className="h-8 w-8" />
+            <span className="text-xl font-bold text-white">Click</span>
+          </Link>
+          <p className="text-gray-400 max-w-md">
+            Professional video production company specializing in creative storytelling, commercial production,
+            and post-production services.
+          </p>
           </div>
 
           {/* Company Links */}
@@ -67,7 +67,7 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">© {new Date().getFullYear()} ModernApp. All rights reserved.</p>
+          <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Click Production. All rights reserved.</p>
 
           {/* Social Links */}
           <div className="flex space-x-4 mt-4 md:mt-0">

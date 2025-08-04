@@ -4,10 +4,10 @@ import { motion } from "framer-motion"
 import { Users, Target, Award, Lightbulb } from "lucide-react"
 
 const stats = [
-  { icon: Users, label: "Happy Developers", value: "10K+" },
-  { icon: Target, label: "Projects Built", value: "500+" },
-  { icon: Award, label: "Awards Won", value: "25+" },
-  { icon: Lightbulb, label: "Ideas Realized", value: "1000+" },
+  { icon: Users, label: "Happy Clients", value: "500+" },
+  { icon: Target, label: "Projects Completed", value: "1000+" },
+  { icon: Award, label: "Awards Won", value: "50+" },
+  { icon: Lightbulb, label: "Creative Ideas", value: "2000+" },
 ]
 
 export default function AboutSection() {
@@ -22,29 +22,29 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Built for Modern Development</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Crafting Visual Stories</h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              Our template combines the latest technologies with proven patterns to help you build exceptional web
-              applications. From small startups to enterprise solutions, we provide the foundation you need to succeed.
+              We are a passionate team of creative professionals dedicated to bringing your vision to life through
+              stunning video production. From concept to final cut, we transform ideas into compelling visual stories.
             </p>
 
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 bg-[#5b6135] rounded-full mt-2 flex-shrink-0" />
                 <p className="text-gray-300">
-                  <strong className="text-white">Developer Experience:</strong> Hot reload, TypeScript support, and modern tooling
+                  <strong className="text-white">Creative Excellence:</strong> Award-winning cinematography and storytelling
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 bg-[#5b6135] rounded-full mt-2 flex-shrink-0" />
                 <p className="text-gray-300">
-                  <strong className="text-white">Performance:</strong> Optimized builds, lazy loading, and efficient rendering
+                  <strong className="text-white">Technical Expertise:</strong> State-of-the-art equipment and post-production
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 bg-[#5b6135] rounded-full mt-2 flex-shrink-0" />
                 <p className="text-gray-300">
-                  <strong className="text-white">Scalability:</strong> Modular architecture and clean code organization
+                  <strong className="text-white">Client Focus:</strong> Collaborative approach from concept to delivery
                 </p>
               </div>
             </div>
