@@ -321,7 +321,7 @@ export default function HeroSection() {
               size="lg" 
               className="group bg-[#5b6135] hover:bg-[#8f9a6f] text-white border-[#5b6135] hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#5b6135]/20 text-lg sm:text-xl px-8 sm:px-10 py-4 sm:py-5"
             >
-              Click Now!
+              Click Now! {/* Updated button text - deployment timestamp */}
               <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </motion.div>
