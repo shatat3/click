@@ -5,7 +5,7 @@ import { motion, type HTMLMotionProps } from "framer-motion"
 import { cn } from "../../lib/utils"
 
 export interface ButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
-  variant?: "default" | "primary" | "secondary" | "outline" | "ghost"
+  variant?: "default" | "primary" | "secondary" | "outline" | "ghost" | "3d"
   size?: "sm" | "md" | "lg"
   children: React.ReactNode
 }
@@ -16,10 +16,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       default: "bg-white text-gray-900 hover:bg-gray-100 focus:ring-gray-500",
-      primary: "bg-[#5b6135] text-white hover:bg-[#8f9a6f] focus:ring-[#5b6135] border border-[#5b6135]",
+      primary: "elegant-button-3d focus:ring-white/50",
       secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500",
-      outline: "border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 focus:ring-gray-500",
-      ghost: "bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500"
+      outline: "border border-white/20 bg-transparent text-white hover:bg-white/10 focus:ring-white/50",
+      ghost: "bg-transparent text-white hover:bg-white/10 focus:ring-white/50",
+      "3d": "elegant-button-3d focus:ring-white/50"
     }
 
     const sizes = {

@@ -95,14 +95,17 @@ export default function ContactSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="p-6">
+                <Card className="p-6" variant="3d" hover={true}>
                   <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-gradient-to-r from-[#5b6135] to-[#8f9a6f] rounded-lg">
+                    <div className="p-3 bg-gradient-to-r from-white/20 to-white/10 rounded-lg shadow-glow-white">
                       <info.icon className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-white mb-1">{info.title}</h3>
-                      <a href={info.href} className="text-gray-300 hover:text-[#5b6135] transition-colors">
+                      <h3 className="text-lg font-semibold text-white">{info.title}</h3>
+                      <a
+                        href={info.href}
+                        className="text-gray-300 hover:text-white transition-colors duration-200"
+                      >
                         {info.value}
                       </a>
                     </div>
@@ -120,7 +123,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="p-8">
+            <Card className="p-8" variant="3d">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -131,7 +134,7 @@ export default function ContactSection() {
                       {...register("name")}
                       type="text"
                       id="name"
-                      className="w-full px-4 py-3 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-[#5b6135] focus:border-transparent transition-colors text-white placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-colors text-white placeholder-gray-400 shadow-glow-white"
                       placeholder="Your name"
                     />
                     {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>}
@@ -145,7 +148,7 @@ export default function ContactSection() {
                       {...register("email")}
                       type="email"
                       id="email"
-                      className="w-full px-4 py-3 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-[#5b6135] focus:border-transparent transition-colors text-white placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-colors text-white placeholder-gray-400 shadow-glow-white"
                       placeholder="your@email.com"
                     />
                     {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>}
@@ -160,7 +163,7 @@ export default function ContactSection() {
                     {...register("subject")}
                     type="text"
                     id="subject"
-                    className="w-full px-4 py-3 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-[#5b6135] focus:border-transparent transition-colors text-white placeholder-gray-400"
+                    className="w-full px-4 py-3 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-colors text-white placeholder-gray-400 shadow-glow-white"
                     placeholder="What's this about?"
                   />
                   {errors.subject && <p className="mt-1 text-sm text-red-400">{errors.subject.message}</p>}
@@ -174,13 +177,13 @@ export default function ContactSection() {
                     {...register("message")}
                     id="message"
                     rows={6}
-                    className="w-full px-4 py-3 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-[#5b6135] focus:border-transparent transition-colors resize-none text-white placeholder-gray-400"
+                    className="w-full px-4 py-3 bg-black/20 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent transition-colors resize-none text-white placeholder-gray-400 shadow-glow-white"
                     placeholder="Tell us more about your project..."
                   />
                   {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>}
                 </div>
 
-                <Button type="submit" size="lg" className="w-full group">
+                <Button type="submit" size="lg" variant="3d" className="w-full group shadow-glow-white-strong">
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>

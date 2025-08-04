@@ -51,36 +51,85 @@
     @apply bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent;
   }
 
-  .shadow-glow {
-    box-shadow: 0 0 20px rgba(91, 97, 53, 0.3);
+  /* White Glowing Effects */
+  .shadow-glow-white {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   }
 
-  .luxury-card {
-    @apply bg-black/40 backdrop-blur-xl rounded-xl shadow-2xl border border-white/10 overflow-hidden;
+  .shadow-glow-white-strong {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
   }
 
-  .elegant-button {
-    @apply bg-[#5b6135]/20 border-[#5b6135]/30 text-white hover:bg-[#5b6135]/40 transition-all duration-300;
+  .shadow-glow-white-intense {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
   }
 
-  .accent-green {
-    @apply text-[#5b6135];
+  /* 3D Card Styling */
+  .luxury-card-3d {
+    @apply bg-black/40 backdrop-blur-xl rounded-xl border border-white/20 overflow-hidden;
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(0);
+    transition: all 0.3s ease;
   }
 
-  .accent-green-bg {
-    @apply bg-[#5b6135];
+  .luxury-card-3d:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
-  .accent-green-border {
-    @apply border-[#5b6135];
+  /* 3D Button Styling */
+  .elegant-button-3d {
+    @apply bg-white/10 border-white/20 text-white backdrop-blur-md;
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.3),
+      0 0 10px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(0);
+    transition: all 0.3s ease;
   }
 
-  .highlight-text {
-    @apply text-[#8f9a6f];
+  .elegant-button-3d:hover {
+    @apply bg-white/20 border-white/30;
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.4),
+      0 0 20px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
-  .highlight-text-bold {
-    @apply text-[#c8d1b5];
+  .elegant-button-3d:active {
+    transform: translateY(0);
+    box-shadow: 
+      0 2px 10px rgba(0, 0, 0, 0.3),
+      0 0 5px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* White Accent Colors */
+  .accent-white {
+    @apply text-white;
+  }
+
+  .accent-white-bg {
+    @apply bg-white/10;
+  }
+
+  .accent-white-border {
+    @apply border-white/20;
+  }
+
+  .highlight-text-white {
+    @apply text-white;
+  }
+
+  .highlight-text-white-soft {
+    @apply text-gray-300;
   }
 
   .font-armenian {

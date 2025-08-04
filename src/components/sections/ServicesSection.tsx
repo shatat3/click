@@ -64,9 +64,9 @@ export default function ServicesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className="p-6 h-full luxury-card">
+              <Card className="p-6 h-full" variant="3d" hover={true}>
                 <div className="flex items-center mb-4">
-                  <div className="p-3 bg-gradient-to-r from-[#5b6135] to-[#8f9a6f] rounded-lg">
+                  <div className="p-3 bg-gradient-to-r from-white/20 to-white/10 rounded-lg shadow-glow-white">
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
