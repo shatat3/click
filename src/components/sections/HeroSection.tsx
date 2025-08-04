@@ -274,7 +274,8 @@ export default function HeroSection() {
             objectPosition: 'center center'
           }}
         >
-          <source src="/hero-video-mbsize.mp4" type="video/mp4" />
+          <source src="/hero-video
+          .mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         
