@@ -1,14 +1,20 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import Button from "../ui/Button"
 
 export default function HeroSection() {
   const mobileVideoRef = useRef<HTMLVideoElement>(null)
   const desktopVideoRef = useRef<HTMLVideoElement>(null)
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+
+  const handleScrollDown = () => {
+    const nextSection = document.querySelector('section:nth-of-type(2)')
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   useEffect(() => {
     // Aggressive autoplay strategy for mobile - Updated for deployment
@@ -321,7 +327,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="py-8 sm:py-12 lg:py-16"
         >
-          {/* CTA Button - Hidden on mobile until video plays */}
+          {/* Scroll Down Indicator - Hidden on mobile until video plays */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ 
@@ -334,16 +340,27 @@ export default function HeroSection() {
               delay: 0.6,
               display: { delay: 0.2 }
             }}
-            className={`${isVideoPlaying ? 'block' : 'hidden md:block'}`}
+            className={`${isVideoPlaying ? 'block' : 'hidden md:block'} flex flex-col items-center space-y-2`}
           >
-            <Button 
-              size="lg" 
-              variant="3d"
-              className="group text-lg sm:text-xl px-8 sm:px-10 py-4 sm:py-5 shadow-glow-white-intense"
+            <motion.p 
+              className="text-white/80 text-sm font-medium mb-2"
+              style={{ 
+                textShadow: '0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4)' 
+              }}
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
-              Start Your Project
-              <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
+              Scroll to explore
+            </motion.p>
+            <motion.div
+              onClick={handleScrollDown}
+              className="flex flex-col items-center cursor-pointer group"
+              whileHover={{ scale: 1.1 }}
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <ChevronDown className="h-8 w-8 text-white/80 group-hover:text-white transition-colors duration-300" />
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
