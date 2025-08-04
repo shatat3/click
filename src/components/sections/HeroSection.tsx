@@ -325,7 +325,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="py-8 sm:py-12 lg:py-16"
+          className="py-8 sm:py-12 lg:py-16 md:py-8"
         >
           {/* Scroll Down Indicator - Hidden on mobile until video plays */}
           <motion.div
@@ -340,7 +340,7 @@ export default function HeroSection() {
               delay: 0.6,
               display: { delay: 0.2 }
             }}
-            className={`${isVideoPlaying ? 'block' : 'hidden md:block'} flex flex-col items-center space-y-2`}
+            className={`${isVideoPlaying ? 'block' : 'hidden md:block'} flex flex-col items-center space-y-2 mt-8 md:mt-0`}
           >
             <motion.p 
               className="text-white/80 text-sm font-medium mb-2"
