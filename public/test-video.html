@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .video-container {
+            margin: 20px 0;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Test Page</h1>
+    
+    <div class="video-container">
+        <h2>Desktop Video Test</h2>
+        <video controls width="400">
+            <source src="/hero-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p id="desktop-status">Checking desktop video...</p>
+    </div>
+
+    <div class="video-container">
+        <h2>Mobile Video Test</h2>
+        <video controls width="400">
+            <source src="/hero-video-mbsize.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p id="mobile-status">Checking mobile video...</p>
+    </div>
+
+    <script>
+        // Test video accessibility
+        function testVideo(videoSrc, statusId) {
+            fetch(videoSrc)
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById(statusId).innerHTML = 
+                            `<span class="success">✅ Video file accessible (${response.headers.get('content-length')} bytes)</span>`;
+                    } else {
+                        document.getElementById(statusId).innerHTML = 
+                            `<span class="error">❌ Video file not accessible (${response.status})</span>`;
+                    }
+                })
+                .catch(error => {
+                    document.getElementById(statusId).innerHTML = 
+                        `<span class="error">❌ Error accessing video: ${error.message}</span>`;
+                });
+        }
+
+        // Test both videos
+        testVideo('/hero-video.mp4', 'desktop-status');
+        testVideo('/hero-video-mbsize.mp4', 'mobile-status');
+    </script>
+</body>
+</html> 
