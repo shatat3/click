@@ -10,14 +10,16 @@ export default function HeroSection() {
   const desktopVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    // Enhanced autoplay strategy for mobile
+    // Aggressive autoplay strategy for mobile
     const playVideos = async () => {
       try {
-        // Strategy 1: Direct play attempt with user gesture simulation
+        // Strategy 1: Direct play attempt with explicit mobile settings
         if (mobileVideoRef.current) {
           mobileVideoRef.current.currentTime = 0
           mobileVideoRef.current.muted = true
           mobileVideoRef.current.playsInline = true
+          mobileVideoRef.current.autoplay = true
+          mobileVideoRef.current.loop = true
           await mobileVideoRef.current.play()
           console.log('Mobile video autoplay successful')
         }
@@ -29,11 +31,15 @@ export default function HeroSection() {
       } catch (error) {
         console.log('Direct autoplay failed, trying alternative methods:', error)
         
-        // Strategy 2: Try with multiple delays
+        // Strategy 2: Try with multiple delays and different approaches
         const tryDelayedPlay = async (delay: number) => {
           setTimeout(async () => {
             try {
               if (mobileVideoRef.current) {
+                // Force reload and play
+                mobileVideoRef.current.load()
+                mobileVideoRef.current.muted = true
+                mobileVideoRef.current.playsInline = true
                 await mobileVideoRef.current.play()
                 console.log(`Mobile video ${delay}ms delayed autoplay successful`)
               }
@@ -47,16 +53,21 @@ export default function HeroSection() {
           }, delay)
         }
 
-        // Try multiple delay times
-        tryDelayedPlay(100)
+        // Try multiple delay times with different strategies
+        tryDelayedPlay(50)
+        tryDelayedPlay(200)
         tryDelayedPlay(500)
         tryDelayedPlay(1000)
+        tryDelayedPlay(2000)
 
         // Strategy 3: Try on page visibility change
         const handleVisibilityChange = async () => {
           if (!document.hidden) {
             try {
               if (mobileVideoRef.current) {
+                mobileVideoRef.current.load()
+                mobileVideoRef.current.muted = true
+                mobileVideoRef.current.playsInline = true
                 await mobileVideoRef.current.play()
                 console.log('Mobile video visibility change autoplay successful')
               }
@@ -76,6 +87,9 @@ export default function HeroSection() {
         const handleWindowFocus = async () => {
           try {
             if (mobileVideoRef.current) {
+              mobileVideoRef.current.load()
+              mobileVideoRef.current.muted = true
+              mobileVideoRef.current.playsInline = true
               await mobileVideoRef.current.play()
               console.log('Mobile video window focus autoplay successful')
             }
@@ -94,6 +108,9 @@ export default function HeroSection() {
         const handleUserInteraction = async () => {
           try {
             if (mobileVideoRef.current) {
+              mobileVideoRef.current.load()
+              mobileVideoRef.current.muted = true
+              mobileVideoRef.current.playsInline = true
               await mobileVideoRef.current.play()
               console.log('Mobile video user interaction autoplay successful')
             }
@@ -106,6 +123,7 @@ export default function HeroSection() {
             document.removeEventListener('click', handleUserInteraction)
             document.removeEventListener('keydown', handleUserInteraction)
             document.removeEventListener('scroll', handleUserInteraction)
+            document.removeEventListener('mousemove', handleUserInteraction)
           } catch (interactionError) {
             console.log('User interaction autoplay failed:', interactionError)
           }
@@ -116,6 +134,28 @@ export default function HeroSection() {
         document.addEventListener('click', handleUserInteraction, { once: true })
         document.addEventListener('keydown', handleUserInteraction, { once: true })
         document.addEventListener('scroll', handleUserInteraction, { once: true })
+        document.addEventListener('mousemove', handleUserInteraction, { once: true })
+
+        // Strategy 6: Try on DOM content loaded
+        const handleDOMContentLoaded = async () => {
+          try {
+            if (mobileVideoRef.current) {
+              mobileVideoRef.current.load()
+              mobileVideoRef.current.muted = true
+              mobileVideoRef.current.playsInline = true
+              await mobileVideoRef.current.play()
+              console.log('Mobile video DOM content loaded autoplay successful')
+            }
+          } catch (domError) {
+            console.log('DOM content loaded autoplay failed:', domError)
+          }
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', handleDOMContentLoaded)
+        } else {
+          handleDOMContentLoaded()
+        }
 
         // Cleanup
         return () => {
@@ -125,6 +165,8 @@ export default function HeroSection() {
           document.removeEventListener('click', handleUserInteraction)
           document.removeEventListener('keydown', handleUserInteraction)
           document.removeEventListener('scroll', handleUserInteraction)
+          document.removeEventListener('mousemove', handleUserInteraction)
+          document.removeEventListener('DOMContentLoaded', handleDOMContentLoaded)
         }
       }
     }
@@ -222,7 +264,7 @@ export default function HeroSection() {
             objectPosition: 'center center'
           }}
         >
-          <source src="/hero-video-mbsize2.mp4" type="video/mp4" />
+          <source src="/hero-video-mbsize.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         
