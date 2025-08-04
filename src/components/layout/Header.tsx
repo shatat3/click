@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Sparkles } from "lucide-react"
 import { cn } from "../../lib/utils"
 
 export default function Header() {

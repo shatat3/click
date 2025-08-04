@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Sparkles, Instagram, Twitter, Linkedin } from "lucide-react"
+import { Instagram, Twitter, Linkedin } from "lucide-react"
 
 const footerLinks = {
   company: [

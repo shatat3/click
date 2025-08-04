@@ -8,6 +8,7 @@ import { Mail, Phone, MapPin } from "lucide-react"
 import Button from "../ui/Button"
 import Card from "../ui/Card"
 import toast from "react-hot-toast"
+import { useIntersectionObserver } from "../../hooks/useIntersectionObserver"
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -24,22 +25,30 @@ const contactInfo = [
     title: "Email",
     value: "support@clickproduction.com",
     href: "mailto:hello@clickproduction.com",
+    delay: 0.1
   },
   {
     icon: Phone,
     title: "Phone",
     value: "+962 79 555 5555",
     href: "tel:+962795555555",
+    delay: 0.2
   },
   {
     icon: MapPin,
     title: "Studio",
     value: "456 Creative Avenue, Los Angeles, CA 90210",
     href: "#",
+    delay: 0.3
   },
 ]
 
 export default function ContactSection() {
+  const { ref: sectionRef, isIntersecting } = useIntersectionObserver({
+    threshold: 0.2,
+    rootMargin: '-50px'
+  })
+
   const {
     register,
     handleSubmit,
@@ -62,20 +71,31 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="py-24 bg-black">
-      <div className="container-custom">
+    <section ref={sectionRef} className="section-enhanced grid-bg">
+      <div className="container-custom relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Start Your Project</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <motion.h2 
+            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            Start Your <span className="text-gradient">Project</span>
+          </motion.h2>
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Ready to bring your vision to life? Let's discuss your project and create something amazing together.
             Get in touch and we'll respond within 24 hours.
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-12">
@@ -83,25 +103,27 @@ export default function ContactSection() {
           <motion.div
             className="space-y-6"
             initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            animate={isIntersecting ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            {contactInfo.map((info, index) => (
+            {contactInfo.map((info) => (
               <motion.div
                 key={info.title}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: info.delay }}
               >
-                <Card className="p-6" variant="3d" hover={true}>
+                <Card className="p-6 group" variant="3d" hover={true}>
                   <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-gradient-to-r from-white/20 to-white/10 rounded-lg shadow-glow-white">
+                    <motion.div 
+                      className="p-3 bg-gradient-to-r from-white/20 to-white/10 rounded-lg shadow-glow-white group-hover:shadow-glow-white-strong transition-all duration-300"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
                       <info.icon className="h-6 w-6 text-white" />
-                    </div>
+                    </motion.div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white">{info.title}</h3>
+                      <h3 className="text-lg font-semibold text-white group-hover:text-gradient transition-all duration-300">{info.title}</h3>
                       <a
                         href={info.href}
                         className="text-gray-300 hover:text-white transition-colors duration-200"
@@ -119,14 +141,17 @@ export default function ContactSection() {
           <motion.div
             className="lg:col-span-2"
             initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            animate={isIntersecting ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Card className="p-8" variant="3d">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                  >
                     <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
                       Name
                     </label>
@@ -138,9 +163,13 @@ export default function ContactSection() {
                       placeholder="Your name"
                     />
                     {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>}
-                  </div>
+                  </motion.div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
                     <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
                       Email
                     </label>
@@ -152,10 +181,14 @@ export default function ContactSection() {
                       placeholder="your@email.com"
                     />
                     {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>}
-                  </div>
+                  </motion.div>
                 </div>
 
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                >
                   <label htmlFor="subject" className="block text-sm font-medium text-white mb-2">
                     Subject
                   </label>
@@ -167,9 +200,13 @@ export default function ContactSection() {
                     placeholder="What's this about?"
                   />
                   {errors.subject && <p className="mt-1 text-sm text-red-400">{errors.subject.message}</p>}
-                </div>
+                </motion.div>
 
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                >
                   <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
                     Message
                   </label>
@@ -181,11 +218,17 @@ export default function ContactSection() {
                     placeholder="Tell us more about your project..."
                   />
                   {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>}
-                </div>
+                </motion.div>
 
-                <Button type="submit" size="lg" variant="3d" className="w-full group shadow-glow-white-strong">
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isIntersecting ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.6, delay: 0.9 }}
+                >
+                  <Button type="submit" size="lg" variant="3d" className="w-full group shadow-glow-white-strong">
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </Button>
+                </motion.div>
               </form>
             </Card>
           </motion.div>
