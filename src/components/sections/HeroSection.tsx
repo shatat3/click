@@ -10,7 +10,7 @@ export default function HeroSection() {
   const desktopVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    // Aggressive autoplay strategy for mobile
+    // Aggressive autoplay strategy for mobile - Updated for deployment
     const playVideos = async () => {
       try {
         // Strategy 1: Direct play attempt with explicit mobile settings
