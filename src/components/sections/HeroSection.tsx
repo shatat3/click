@@ -10,12 +10,14 @@ export default function HeroSection() {
   const desktopVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    // Multiple strategies to ensure autoplay works
+    // Enhanced autoplay strategy for mobile
     const playVideos = async () => {
       try {
-        // Strategy 1: Direct play attempt
+        // Strategy 1: Direct play attempt with user gesture simulation
         if (mobileVideoRef.current) {
           mobileVideoRef.current.currentTime = 0
+          mobileVideoRef.current.muted = true
+          mobileVideoRef.current.playsInline = true
           await mobileVideoRef.current.play()
           console.log('Mobile video autoplay successful')
         }
@@ -27,21 +29,28 @@ export default function HeroSection() {
       } catch (error) {
         console.log('Direct autoplay failed, trying alternative methods:', error)
         
-        // Strategy 2: Try with a small delay
-        setTimeout(async () => {
-          try {
-            if (mobileVideoRef.current) {
-              await mobileVideoRef.current.play()
-              console.log('Mobile video delayed autoplay successful')
+        // Strategy 2: Try with multiple delays
+        const tryDelayedPlay = async (delay: number) => {
+          setTimeout(async () => {
+            try {
+              if (mobileVideoRef.current) {
+                await mobileVideoRef.current.play()
+                console.log(`Mobile video ${delay}ms delayed autoplay successful`)
+              }
+              if (desktopVideoRef.current) {
+                await desktopVideoRef.current.play()
+                console.log(`Desktop video ${delay}ms delayed autoplay successful`)
+              }
+            } catch (delayError) {
+              console.log(`${delay}ms delayed autoplay failed:`, delayError)
             }
-            if (desktopVideoRef.current) {
-              await desktopVideoRef.current.play()
-              console.log('Desktop video delayed autoplay successful')
-            }
-          } catch (delayError) {
-            console.log('Delayed autoplay also failed:', delayError)
-          }
-        }, 100)
+          }, delay)
+        }
+
+        // Try multiple delay times
+        tryDelayedPlay(100)
+        tryDelayedPlay(500)
+        tryDelayedPlay(1000)
 
         // Strategy 3: Try on page visibility change
         const handleVisibilityChange = async () => {
@@ -96,14 +105,17 @@ export default function HeroSection() {
             document.removeEventListener('touchstart', handleUserInteraction)
             document.removeEventListener('click', handleUserInteraction)
             document.removeEventListener('keydown', handleUserInteraction)
+            document.removeEventListener('scroll', handleUserInteraction)
           } catch (interactionError) {
             console.log('User interaction autoplay failed:', interactionError)
           }
         }
 
+        // Add more interaction events for mobile
         document.addEventListener('touchstart', handleUserInteraction, { once: true })
         document.addEventListener('click', handleUserInteraction, { once: true })
         document.addEventListener('keydown', handleUserInteraction, { once: true })
+        document.addEventListener('scroll', handleUserInteraction, { once: true })
 
         // Cleanup
         return () => {
@@ -112,6 +124,7 @@ export default function HeroSection() {
           document.removeEventListener('touchstart', handleUserInteraction)
           document.removeEventListener('click', handleUserInteraction)
           document.removeEventListener('keydown', handleUserInteraction)
+          document.removeEventListener('scroll', handleUserInteraction)
         }
       }
     }
@@ -209,7 +222,7 @@ export default function HeroSection() {
             objectPosition: 'center center'
           }}
         >
-          <source src="/hero-video-mbsize.mp4" type="video/mp4" />
+          <source src="/hero-video-mbsize2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         
@@ -266,7 +279,7 @@ export default function HeroSection() {
               size="lg" 
               className="group bg-[#5b6135] hover:bg-[#8f9a6f] text-white border-[#5b6135] hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#5b6135]/20 text-lg sm:text-xl px-8 sm:px-10 py-4 sm:py-5"
             >
-              Get Started
+              Click Now!
               <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </motion.div>
