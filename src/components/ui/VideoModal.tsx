@@ -86,7 +86,6 @@ export default function VideoModal({ isOpen, onClose, client }: VideoModalProps)
                   className="rounded-b-2xl"
                   autoplay={true}
                   muted={false}
-                  controls={true}
                 />
               ) : (
                 <div className="w-full aspect-video flex items-center justify-center bg-gray-900 rounded-b-2xl">

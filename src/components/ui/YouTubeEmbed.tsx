@@ -10,7 +10,6 @@ interface YouTubeEmbedProps {
   className?: string
   autoplay?: boolean
   muted?: boolean
-  controls?: boolean
 }
 
 export default function YouTubeEmbed({
@@ -18,8 +17,7 @@ export default function YouTubeEmbed({
   title,
   className = "",
   autoplay = false,
-  muted = true,
-  controls = true
+  muted = true
 }: YouTubeEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
