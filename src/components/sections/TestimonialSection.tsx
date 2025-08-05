@@ -84,25 +84,7 @@ export default function TestimonialSection() {
         </motion.div>
 
         {/* Testimonial Card */}
-        <div className="max-w-4xl mx-auto mb-12 relative">
-          {/* Navigation Arrows - Outside the card */}
-          <div className="absolute top-1/2 -translate-y-1/2 -left-6 md:-left-12 z-20">
-            <button
-              onClick={prevTestimonial}
-              className="w-12 h-12 glass-effect rounded-full flex items-center justify-center shadow-glow-white hover:shadow-glow-white-strong transition-all duration-200 hover:scale-110"
-            >
-              <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-          </div>
-          <div className="absolute top-1/2 -translate-y-1/2 -right-6 md:-right-12 z-20">
-            <button
-              onClick={nextTestimonial}
-              className="w-12 h-12 glass-effect rounded-full flex items-center justify-center shadow-glow-white hover:shadow-glow-white-strong transition-all duration-200 hover:scale-110"
-            >
-              <ChevronRight className="w-6 h-6 text-white" />
-            </button>
-          </div>
-
+        <div className="max-w-4xl mx-auto mb-12">
           <motion.div
             className="glass-effect rounded-2xl p-8 md:p-12 relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
@@ -166,10 +148,26 @@ export default function TestimonialSection() {
               </motion.div>
             </AnimatePresence>
           </motion.div>
+
+          {/* Navigation Arrows - Below the card */}
+          <div className="flex justify-center gap-4 mt-6">
+            <button
+              onClick={prevTestimonial}
+              className="w-12 h-12 glass-effect rounded-full flex items-center justify-center shadow-glow-white hover:shadow-glow-white-strong transition-all duration-200 hover:scale-110"
+            >
+              <ChevronLeft className="w-6 h-6 text-white" />
+            </button>
+            <button
+              onClick={nextTestimonial}
+              className="w-12 h-12 glass-effect rounded-full flex items-center justify-center shadow-glow-white hover:shadow-glow-white-strong transition-all duration-200 hover:scale-110"
+            >
+              <ChevronRight className="w-6 h-6 text-white" />
+            </button>
+          </div>
         </div>
 
         {/* Client Navigation */}
-        <div className="max-w-4xl mx-auto relative mt-2">
+        <div className="max-w-4xl mx-auto relative mt-16">
           <motion.div
             className="flex overflow-x-auto gap-2 md:gap-3 pb-4 pt-8 scrollbar-hide px-8 md:px-12 relative"
             initial={{ opacity: 0, y: 20 }}
@@ -208,7 +206,7 @@ export default function TestimonialSection() {
 
           {/* Progress Indicators */}
           <motion.div
-            className="flex justify-center gap-2 mt-8"
+            className="flex justify-center gap-2 mt-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
