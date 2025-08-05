@@ -5,6 +5,7 @@ import HeroSection from "../components/sections/HeroSection"
 import ServicesSection from "../components/sections/ServicesSection"
 import WorkCategoriesSection from "../components/sections/WorkCategoriesSection"
 import AboutSection from "../components/sections/AboutSection"
+import TestimonialSection from "../components/sections/TestimonialSection"
 import ContactSection from "../components/sections/ContactSection"
 
 export default function HomePage() {
@@ -14,6 +15,7 @@ export default function HomePage() {
       <ServicesSection />
       <WorkCategoriesSection />
       <AboutSection />
+      <TestimonialSection />
       <ContactSection />
     </motion.div>
   )

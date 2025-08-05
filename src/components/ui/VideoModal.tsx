@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Client } from "../../types"
+import YouTubeEmbed from "./YouTubeEmbed"
 
 interface VideoModalProps {
   isOpen: boolean
@@ -77,19 +78,18 @@ export default function VideoModal({ isOpen, onClose, client }: VideoModalProps)
             </div>
 
             {/* Video Container */}
-            <div className="relative w-full aspect-video">
+            <div className="relative w-full">
               {videoId ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+                <YouTubeEmbed
+                  videoId={videoId}
                   title={`${client.name} - ${client.project}`}
-                  className="w-full h-full rounded-b-2xl"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
+                  className="rounded-b-2xl"
+                  autoplay={true}
+                  muted={false}
+                  controls={true}
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gray-900 rounded-b-2xl">
+                <div className="w-full aspect-video flex items-center justify-center bg-gray-900 rounded-b-2xl">
                   <p className="text-gray-400">Loading video...</p>
                 </div>
               )}

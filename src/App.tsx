@@ -12,10 +12,14 @@ import VFXPage from "./pages/VFXPage"
 import EditingPage from "./pages/EditingPage"
 import EventsPage from "./pages/EventsPage"
 import ErrorBoundary from "./components/common/ErrorBoundary"
+import { useScrollToTop } from "./hooks/useScrollToTop"
 import "./styles/globals.css"
 
 function App() {
   const location = useLocation()
+  
+  // Scroll to top on route change
+  useScrollToTop()
 
   return (
     <ErrorBoundary>
