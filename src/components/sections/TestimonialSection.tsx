@@ -114,30 +114,56 @@ export default function TestimonialSection() {
                 className="relative z-10"
               >
                 {/* Profile Section */}
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 rounded-full overflow-hidden mr-4 ring-2 ring-white/20">
-                    <img 
-                      src={activeTestimonial.image} 
-                      alt={activeTestimonial.name}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        // Fallback to initials if image fails to load
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const parent = target.parentElement;
-                        if (parent) {
-                          parent.innerHTML = `
-                            <div class="w-full h-full bg-gradient-to-r from-white to-gray-300 rounded-full flex items-center justify-center text-black font-bold text-lg">
-                              ${activeTestimonial.name.split(' ').map(n => n[0]).join('')}
-                            </div>
-                          `;
-                        }
-                      }}
-                    />
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center">
+                    <div className="w-16 h-16 rounded-full overflow-hidden mr-4 ring-2 ring-white/20">
+                      <img 
+                        src={activeTestimonial.image} 
+                        alt={activeTestimonial.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          // Fallback to initials if image fails to load
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const parent = target.parentElement;
+                          if (parent) {
+                            parent.innerHTML = `
+                              <div class="w-full h-full bg-gradient-to-r from-white to-gray-300 rounded-full flex items-center justify-center text-black font-bold text-lg">
+                                ${activeTestimonial.name.split(' ').map(n => n[0]).join('')}
+                              </div>
+                            `;
+                          }
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white">{activeTestimonial.name}</h3>
+                      <p className="text-gray-300">{activeTestimonial.title}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white">{activeTestimonial.name}</h3>
-                    <p className="text-gray-300">{activeTestimonial.title}</p>
+                  
+                  {/* Company Logo */}
+                  <div className="flex items-center">
+                    <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center p-2">
+                      <img 
+                        src={activeTestimonial.logo} 
+                        alt={`${activeTestimonial.company} logo`}
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          // Fallback to company initials if logo fails to load
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const parent = target.parentElement;
+                          if (parent) {
+                            parent.innerHTML = `
+                              <div class="w-full h-full bg-gradient-to-r from-white/20 to-white/10 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                                ${activeTestimonial.company.split(' ').map(n => n[0]).join('')}
+                              </div>
+                            `;
+                          }
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
 

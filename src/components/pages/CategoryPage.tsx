@@ -1,13 +1,10 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
-import { Client } from "../../types"
-import { getClientsByCategory } from "../../utils/clientData"
-import ClientCard from "../ui/ClientCard"
-import VideoModal from "../ui/VideoModal"
+import { getVideoCategoriesByType } from "../../utils/videoCategories"
+import VideoCategoryBox from "../ui/VideoCategoryBox"
 
 interface CategoryPageProps {
   category: string
@@ -19,20 +16,7 @@ interface CategoryPageProps {
 
 export default function CategoryPage({ category, title, description, icon: Icon, gradient }: CategoryPageProps) {
   const navigate = useNavigate()
-  const [selectedClient, setSelectedClient] = useState<Client | null>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const clients = getClientsByCategory(category)
-
-  const handleClientClick = (client: Client) => {
-    setSelectedClient(client)
-    setIsModalOpen(true)
-  }
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setSelectedClient(null)
-  }
+  const videoCategories = getVideoCategoriesByType(category)
 
   const handleBackClick = () => {
     navigate("/")
@@ -65,44 +49,40 @@ export default function CategoryPage({ category, title, description, icon: Icon,
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">{description}</p>
           </div>
 
-          {/* Client Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {clients.map((client, index) => (
-              <motion.div
-                key={client.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <ClientCard client={client} onClick={handleClientClick} />
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Empty State */}
-          {clients.length === 0 && (
+          {/* Video Category Boxes */}
+          {videoCategories.length > 0 && (
             <motion.div
-              className="text-center py-12"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
+              className="mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="text-gray-400 mb-4">
-                <Icon className="h-16 w-16 mx-auto mb-4" />
-                <p className="text-lg">No projects available yet</p>
-                <p className="text-sm">Check back soon for new work</p>
+              <div className="text-center mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  Explore Our <span className="text-gradient">Services</span>
+                </h2>
+                <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                  Click on any category below to view related videos and projects
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {videoCategories.map((videoCategory, index) => (
+                  <VideoCategoryBox
+                    key={videoCategory.id}
+                    {...videoCategory}
+                    delay={index * 0.1}
+                  />
+                ))}
               </div>
             </motion.div>
           )}
+
+
         </motion.div>
       </div>
 
-      {/* Video Modal */}
-      <VideoModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        client={selectedClient}
-      />
+
     </div>
   )
 } 
